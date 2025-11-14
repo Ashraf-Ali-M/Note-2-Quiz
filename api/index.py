@@ -2,7 +2,6 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pdfplumber
-# import os  <-- No longer needed
 import google.generativeai as genai 
 from dotenv import load_dotenv 
 
