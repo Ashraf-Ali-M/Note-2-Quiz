@@ -23,7 +23,7 @@ try:
 except Exception as e:
     raise ValueError(f"Could not initialize model: {e}. Check model name.")
 
-@app.route("/")
+@app.route("/api")
 def home():
     return {"message": "Hello, this is the Python backend!"}
 
@@ -99,7 +99,7 @@ def generate_recap_from_text(text):
         print(f"Error calling Gemini API for recap: {e}")
         return '{ "error": "Failed to generate recap from AI" }'
 
-@app.route("/upload", methods=['POST'])
+@app.route("/api/upload", methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
@@ -147,7 +147,7 @@ def upload_file():
             return jsonify({"error": f"Error processing PDF: {e}"}), 500
 
 # --- /recap Endpoint ---
-@app.route("/recap", methods=['POST'])
+@app.route("/api/recap", methods=['POST'])
 def recap_file():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
